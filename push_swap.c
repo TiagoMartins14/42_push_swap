@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 11:08:27 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:56:39 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_push_swap(t_stack *stack_a)
 	t_stack *stack_b;
 	t_stack *head_a;
 	t_stack *head_b;
+	int	cheapest_option;
+	int	highest_low;
 	
 	head_a = stack_a;
 	
@@ -27,7 +29,16 @@ void	ft_push_swap(t_stack *stack_a)
 	
 	while (ft_is_stack_sorted(stack_a) == 1)
 	{
-		
+		ft_update_pos(stack_a);
+		ft_update_pos(stack_b);
+		ft_update_cost(stack_a, stack_b);
+		cheapest_option = ft_cheapest_option(stack_a, stack_b);
+		while (stack_a->pos != cheapest_option) // Reach the node of the cheapest option
+			stack_a = stack_a->next;
+		highest_low = ft_highest_low(stack_b, stack_a->num);
+		while (stack_b->num != highest_low) // Reach the node of the highest low number
+			stack_b = stack_b->next;
+		ft_operation(&stack_a, &stack_b);
 		
 		if (ft_is_stack_sorted(stack_a) == 0 && ft_stack_len(stack_b) == 0)
 			return ;

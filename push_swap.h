@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 12:50:54 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:59:27 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_stack
 {
 	int	num;
 	int cost;
-	int position;
-	int rev_position;
+	int pos;
+	int rev_pos;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -47,6 +47,9 @@ void	ft_rrb(t_stack **stack);
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_three(t_stack **stack);
 void	ft_update_pos(t_stack *stack);
+void	ft_update_cost(t_stack *stack_a, t_stack *stack_b);
+void	ft_operation_aid(t_stack **stack_a, t_stack **stack_b);
+void	ft_operation(t_stack **stack_a, t_stack **stack_b);
 
 int	ft_is_stack_sorted(t_stack *stack);
 int	ft_check_min(t_stack *stack);
@@ -56,5 +59,6 @@ int ft_lowest_cost(int position_a, int position_b, int len_a, int len_b);
 int	ft_stack_len(t_stack *stack);
 int	ft_big_or_low(int num, t_stack *stack);
 int	ft_highest_low(t_stack *stack, int num);
+int	ft_cheapest_option(t_stack *stack_a, t_stack *stack_b);
 
 #endif

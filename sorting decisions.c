@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting decisions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 11:46:10 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 12:56:21 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:57:45 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,53 +18,56 @@ int	ft_cheapest_option(t_stack *stack_a, t_stack *stack_b)
 	int	cost;
 	
 	cost = stack_a->cost;
-	position = stack_a->position;
+	position = stack_a->pos;
 	while (stack_a)
 	{
 		if (cost > stack_a->cost)
 		{
 			cost = stack_a->cost;
-			position = stack_a->position;
+			position = stack_a->pos;
 		}
 		stack_a = stack_a->next;
 	}
 	return (position);
 }
 
+void	ft_operation_aid(t_stack **stack_a, t_stack **stack_b)
+{
+	while ((*stack_a)->pos != 1)
+	{
+		if ((*stack_a)->pos < (*stack_a)->rev_pos)
+			ft_ra((stack_a));
+		else
+			ft_rra((stack_a));
+	}
+	while ((*stack_b)->pos != 1)
+	{
+		if ((*stack_b)->pos < (*stack_b)->rev_pos)
+			ft_rb((stack_b));
+		else
+			ft_rrb((stack_b));
+	}
+	return ;
+}
+
 void	ft_operation(t_stack **stack_a, t_stack **stack_b)
 {
-	int	lower_cost;
-	int	move; // 1 - A and B up; 2 - A up and B down; 3 - A and B down; 4 - A down and B up
-	int len_a;
-	int len_b;
-
-	len_a = ft_stack_len(&stack_a);
-	len_b = ft_stack_len(&stack_b);
-	lower_cost = len_a;
-	if (len_a > len_b)
-		lower_cost = len_b;
-	while ((*stack_a)->position != 1 && (*stack_b)->position != 1)
-	{
-		
-	}
-	
-/* 	int	cost;
-	int	move; // 1 - A up; 2 - A and B up; 3 - A up and B down; 4 - A and B down; 5 - A down and B up
-
-	cost = (*stack_a)->position - 1; // Cost of only A going up
-	move = 1
-	if (cost < position_b - 1)
-		cost = position_b - 1; // A and B up
-	if (cost > ((position_a - 1) + (len_b - position_b + 1))) // A up and B down
-		cost = ((position_a - 1) + (len_b - position_b + 1));
-	if (cost > len_a - position_a + 1 && cost > len_b - position_b + 1) // A and B down
+		while ((*stack_a)->pos != 1 || (*stack_b)->pos != 1)
+	{ 
+		if ((*stack_a)->rev_pos + 1 - (*stack_b)->rev_pos + 1 > (*stack_a)->pos - 1)
 		{
-			if ((len_a - position_a + 1) > (len_b - position_b + 1))
-				cost = len_a - position_a + 1;
-			else
-				cost = len_b - position_b + 1;
+			ft_ra(stack_a);
+			ft_rrb(stack_b);
 		}
-	if (cost > (len_a - position_a + 1) + position_b - 1) // A down and B up
-		cost = (len_a - position_a + 1) + position_b - 1;
-	return (cost); */
+		else if ((*stack_a)->pos - 1 > (*stack_a)->rev_pos + 1 && (*stack_b)->pos - 1 > (*stack_b)->rev_pos + 1)
+			ft_rrr(stack_a, stack_b);
+		else if ((*stack_a)->pos - 1 < (*stack_a)->rev_pos + 1 && (*stack_b)->pos - 1 < (*stack_b)->rev_pos + 1)
+			ft_rr(stack_a, stack_b);
+		else if ((*stack_b)->rev_pos + 1 - (*stack_a)->rev_pos + 1 > (*stack_b)->pos - 1)
+		{
+			ft_rb(stack_b);
+			ft_rra(stack_a);
+		}
+	}
+	return ;
 }

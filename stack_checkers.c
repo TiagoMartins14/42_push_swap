@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_checkers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:32:31 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 11:38:09 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:09:30 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ int ft_cost(t_stack *head_a, t_stack *head_b, int position)
 
 	len_a = ft_stack_len(head_a);
 	len_b = ft_stack_len(head_b);
-	while (head_a->position != position) // Move to the node 'A' that matches 'position'
+	while (head_a->pos != position) // Move to the node 'A' that matches 'position'
 		head_a = head_a->next;
 	highest_low = ft_highest_low(head_b, head_a->num);
 	while (head_b->num != highest_low) // Move to the node with the highest low
 		head_b = head_b->next;	
-	cost = ft_lowest_cost(head_a->position, head_b->position, len_a, len_b);
+	cost = ft_lowest_cost(head_a->pos, head_b->pos, len_a, len_b);
 	return (cost);
 }
