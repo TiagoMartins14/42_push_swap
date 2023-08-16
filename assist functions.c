@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:06:11 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/14 19:04:38 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/08/16 10:33:09 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,72 +54,4 @@ t_stack	*ft_create_stack(char **argv)
 		i++;
 	}
 	return (head_stack);
-}
-
-int	ft_check_min(t_stack *stack)
-{
-	int	min;
-
-	min = stack->num;
-	while (stack)
-	{
-		if (min > stack->num)
-			min = stack->num;
-		stack = stack->next;
-	}
-	return (min);
-}
-
-int	ft_check_max(t_stack *stack)
-{
-	int	max;
-
-	max = stack->num;
-	while (stack)
-	{
-		if (max < stack->num)
-			max = stack->num;
-		stack = stack->next;
-	}
-	return (max);
-}
-
-int ft_cost(t_stack *stack)
-{
-	// 1 - check if the number is bigger or lower than any other number in the oposite stack
-
-	// 2 - otherwise check which is the highest lower number in the oposite stack
-
-	// 3 - check if the number is above or bellow the middle of the stack
-
-	// 4 - check how many moves it needs to get to the top of the stack (either by going up or down)
-
-	// 5 - if both need to rotate in same direction, count as only one move
-}
-
-
-//cost of bringing the highest number to the top of the stack
-int	ft_cost_of_highest(t_stack *stack)
-{
-	t_stack *head;
-	int		count;
-	int		value;
-	int		num;
-	
-	count = 0;
-	value = count;
-	num = stack->num;
-	while (stack)
-	{
-		if (num < stack->num)
-		{
-			value = count;
-			num = stack->num;
-		}
-		count++;
-		stack = stack->next;
-	}
-	if (value * 2 > count)
-		value = count - value;
-	return (value);
 }
