@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 18:56:39 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/17 13:07:03 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	ft_push_swap(t_stack *stack_a)
 	int	cheapest_option;
 	int	highest_low;
 	
+	stack_b = NULL;
 	head_a = stack_a;
-	
-	ft_push_to_stack(&stack_a, &stack_b);
-	ft_push_to_stack(&stack_a, &stack_b);
+
+	ft_pb(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
 	
 	head_b = stack_b;
 	
@@ -32,10 +33,13 @@ void	ft_push_swap(t_stack *stack_a)
 		ft_update_pos(stack_a);
 		ft_update_pos(stack_b);
 		ft_update_cost(stack_a, stack_b);
-		cheapest_option = ft_cheapest_option(stack_a, stack_b);
+		cheapest_option = ft_cheapest_option(stack_a);
 		while (stack_a->pos != cheapest_option) // Reach the node of the cheapest option
 			stack_a = stack_a->next;
-		highest_low = ft_highest_low(stack_b, stack_a->num);
+		if (ft_big_or_small(stack_a->num, stack_b) == 1)
+			highest_low = ft_check_max(stack_b);
+		else
+			highest_low = ft_highest_low(stack_b, stack_a->num);
 		while (stack_b->num != highest_low) // Reach the node of the highest low number
 			stack_b = stack_b->next;
 		ft_operation(&stack_a, &stack_b);
@@ -43,6 +47,18 @@ void	ft_push_swap(t_stack *stack_a)
 		if (ft_is_stack_sorted(stack_a) == 0 && ft_stack_len(stack_b) == 0)
 			return ;
 	}
+
+	// TESTE
+	t_stack *header = stack_b;
+	while (stack_b)
+	{
+		printf("%d\n", stack_b->num);
+		stack_b = stack_b->next;
+		if (stack_b == header)
+			break ;
+	}
+	// TESTE
+	
 	return ;
 }
 
@@ -54,8 +70,13 @@ int	main(int argc, char **argv)
 	
 	ft_push_swap(stack_a);
 
-
-
+	//8 2 6 4 9 1 0
+	//			cost
+	// 6	2	0
+	// 4	8	1
+	// 9		2
+	// 1		2
+	// 0		1
 	
 	/* stack_b = (t_stack *)malloc(sizeof(t_stack));
 	ft_push_to_stack(&stack_a, &stack_b);

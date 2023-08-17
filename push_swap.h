@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 18:59:27 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/17 11:11:29 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	ft_check_max(t_stack *stack);
 int ft_cost(t_stack *head_a, t_stack *head_b, int position);
 int ft_lowest_cost(int position_a, int position_b, int len_a, int len_b);
 int	ft_stack_len(t_stack *stack);
-int	ft_big_or_low(int num, t_stack *stack);
+int	ft_big_or_small(int num, t_stack *stack);
 int	ft_highest_low(t_stack *stack, int num);
-int	ft_cheapest_option(t_stack *stack_a, t_stack *stack_b);
+int	ft_cheapest_option(t_stack *stack_a);
 
 #endif

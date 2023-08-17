@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_checkers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:32:31 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 18:09:30 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/17 10:18:51 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 int	ft_is_stack_sorted(t_stack *stack)
 {
+	t_stack *head;
+
+	head = stack;
 	while (stack->next)
 	{
 		if (stack->num > stack->next->num)
 			return (1); //NOT sorted
 		stack = stack->next;
+		if (stack == head)
+			break;
 	}
 	return (0); // Sorted
 }
@@ -26,13 +31,17 @@ int	ft_is_stack_sorted(t_stack *stack)
 int	ft_check_min(t_stack *stack)
 {
 	int	min;
+	t_stack *head;
 
 	min = stack->num;
+	head = stack;
 	while (stack)
 	{
 		if (min > stack->num)
 			min = stack->num;
 		stack = stack->next;
+		if (stack == head)
+			break ;
 	}
 	return (min);
 }
@@ -40,13 +49,17 @@ int	ft_check_min(t_stack *stack)
 int	ft_check_max(t_stack *stack)
 {
 	int	max;
-
+	t_stack *head;
+	
 	max = stack->num;
+	head = stack;
 	while (stack)
 	{
 		if (max < stack->num)
 			max = stack->num;
 		stack = stack->next;
+		if (stack == head)
+			break ;
 	}
 	return (max);
 }

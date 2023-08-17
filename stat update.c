@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stat update.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 11:34:32 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 18:38:52 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/17 10:10:11 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	ft_update_pos(t_stack *stack)
 {
 	int	pos;
 	int rev_pos;
+	t_stack *head;
 	
 	pos = 1;
 	rev_pos = ft_stack_len(stack);
+	head = stack;
 	while (stack)
 	{
 		stack->pos = pos;
@@ -26,6 +28,8 @@ void	ft_update_pos(t_stack *stack)
 		pos++;
 		rev_pos--;
 		stack = stack->next;
+		if (stack == head)
+			break ;
 	}
 }
 
@@ -36,7 +40,7 @@ void	ft_update_cost(t_stack *stack_a, t_stack *stack_b)
 	head_a = stack_a;
 	while (stack_a)
 	{
-		stack_a->cost = ft_cost(stack_a, stack_b, stack_a->pos);
+		stack_a->cost = ft_cost(head_a, stack_b, stack_a->pos);
 		stack_a = stack_a->next;
 		if (stack_a == head_a)
 			break ;

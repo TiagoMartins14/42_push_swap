@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assist functions 2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 18:30:10 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/16 19:14:05 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/17 10:24:52 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@
 int	ft_stack_len(t_stack *stack)
 {
 	int	len;
+	t_stack *head;
 
 	len = 0;
+	head = stack;
 	while (stack)
 	{
 		len++;
 		stack = stack->next;
+		if (stack == head)
+			break ;
 	}
 	return (len);
 }
 
 // Checks if num is higher or lower than any other number in the given stack
-int	ft_big_or_low(int num, t_stack *stack)
+int	ft_big_or_small(int num, t_stack *stack)
 {
 	int	max;
 	int	min;
@@ -43,8 +47,10 @@ int	ft_big_or_low(int num, t_stack *stack)
 int	ft_highest_low(t_stack *stack, int num)
 {
 	int highest_low;
+	t_stack *head;
 
 	highest_low = ft_check_min(stack);
+	head = stack;
 	if (highest_low > num)
 		return (ft_check_max(stack));
 	while (stack)
@@ -52,6 +58,8 @@ int	ft_highest_low(t_stack *stack, int num)
 		if (stack->num < num && stack->num > highest_low)
 			highest_low = stack->num;
 		stack = stack->next;
+		if (stack == head)
+			break ;
 	}
 	return (highest_low);
 }
