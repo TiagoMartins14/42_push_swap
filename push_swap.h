@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/17 11:11:29 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/08/28 21:55:08 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_three(t_stack **stack);
 void	ft_update_pos(t_stack *stack);
 void	ft_update_cost(t_stack *stack_a, t_stack *stack_b);
-void	ft_operation_aid(t_stack **stack_a, t_stack **stack_b);
-void	ft_operation(t_stack **stack_a, t_stack **stack_b);
+void	ft_operation_aid(t_stack **stack_a, t_stack **stack_b, int cheapest_option, int highest_low);
+void	ft_operation(t_stack **stack_a, t_stack **stack_b, int cheapest_option, int highest_low);
+void	ft_operation_aid_back(t_stack **stack_b, t_stack **stack_a, int cheapest_option, int highest_low);
+void	ft_operation_back(t_stack **stack_b, t_stack **stack_a, int cheapest_option, int highest_low);
 
 int	ft_is_stack_sorted(t_stack *stack);
 int	ft_check_min(t_stack *stack);
@@ -59,6 +61,7 @@ int ft_lowest_cost(int position_a, int position_b, int len_a, int len_b);
 int	ft_stack_len(t_stack *stack);
 int	ft_big_or_small(int num, t_stack *stack);
 int	ft_highest_low(t_stack *stack, int num);
+int	ft_lowest_high(t_stack *stack, int num);
 int	ft_cheapest_option(t_stack *stack_a);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_checkers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:32:31 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/17 10:18:51 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/08/26 23:59:00 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_is_stack_sorted(t_stack *stack)
 {
-	t_stack *head;
+	t_stack	*head;
 
 	head = stack;
 	while (stack->next)
@@ -22,16 +22,16 @@ int	ft_is_stack_sorted(t_stack *stack)
 		if (stack->num > stack->next->num)
 			return (1); //NOT sorted
 		stack = stack->next;
-		if (stack == head)
-			break;
+		if (stack->next == head)
+			break ;
 	}
 	return (0); // Sorted
 }
 
 int	ft_check_min(t_stack *stack)
 {
-	int	min;
-	t_stack *head;
+	int		min;
+	t_stack	*head;
 
 	min = stack->num;
 	head = stack;
@@ -48,9 +48,9 @@ int	ft_check_min(t_stack *stack)
 
 int	ft_check_max(t_stack *stack)
 {
-	int	max;
-	t_stack *head;
-	
+	int		max;
+	t_stack	*head;
+
 	max = stack->num;
 	head = stack;
 	while (stack)
@@ -64,7 +64,7 @@ int	ft_check_max(t_stack *stack)
 	return (max);
 }
 
-int ft_lowest_cost(int position_a, int position_b, int len_a, int len_b)
+int	ft_lowest_cost(int position_a, int position_b, int len_a, int len_b)
 {
 	int	cost;
 
@@ -73,24 +73,25 @@ int ft_lowest_cost(int position_a, int position_b, int len_a, int len_b)
 		cost = position_b - 1; // A and B up
 	if (cost > ((position_a - 1) + (len_b - position_b + 1))) // A up and B down
 		cost = ((position_a - 1) + (len_b - position_b + 1));
-	if (cost > len_a - position_a + 1 && cost > len_b - position_b + 1) // A and B down
-		{
-			if ((len_a - position_a + 1) > (len_b - position_b + 1))
-				cost = len_a - position_a + 1;
-			else
-				cost = len_b - position_b + 1;
-		}
+	if (cost > len_a - position_a + 1 && cost > \
+	len_b - position_b + 1) // A and B down
+	{
+		if ((len_a - position_a + 1) > (len_b - position_b + 1))
+			cost = len_a - position_a + 1;
+		else
+			cost = len_b - position_b + 1;
+	}
 	if (cost > (len_a - position_a + 1) + position_b - 1) // A down and B up
 		cost = (len_a - position_a + 1) + position_b - 1;
 	return (cost);
 }
 
-int ft_cost(t_stack *head_a, t_stack *head_b, int position)
+int	ft_cost(t_stack *head_a, t_stack *head_b, int position)
 {
-	int	cost;
-	int	highest_low; // Highest lower number in head_b compared to head_a->num
-	int len_a;
+	int	len_a;
 	int	len_b;
+	int	cost;
+	int	highest_low;
 
 	len_a = ft_stack_len(head_a);
 	len_b = ft_stack_len(head_b);
@@ -98,7 +99,7 @@ int ft_cost(t_stack *head_a, t_stack *head_b, int position)
 		head_a = head_a->next;
 	highest_low = ft_highest_low(head_b, head_a->num);
 	while (head_b->num != highest_low) // Move to the node with the highest low
-		head_b = head_b->next;	
+		head_b = head_b->next;
 	cost = ft_lowest_cost(head_a->pos, head_b->pos, len_a, len_b);
 	return (cost);
 }
