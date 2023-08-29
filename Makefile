@@ -6,7 +6,7 @@
 #    By: tiago <tiago@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/26 23:48:53 by tiago             #+#    #+#              #
-#    Updated: 2023/08/28 11:46:42 by tiago            ###   ########.fr        #
+#    Updated: 2023/08/29 15:41:49 by tiago            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS = assist_functions_2.c		\
 		general_algorithms.c	\
 		operations_1.c			\
 		operations_2.c			\
+		push_swap_breakdown.c	\
 		push_swap.c				\
 		sort_functions.c		\
 		sorting_decisions.c		\

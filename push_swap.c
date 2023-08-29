@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/28 22:22:05 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/29 21:44:12 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,26 @@ void	ft_push_swap(t_stack *stack_a)
 	
 	stack_b = NULL;
 	head_a = stack_a;
-	ft_pb(&stack_a, &stack_b);
+	if (ft_sorted_but_not_quite(stack_a) == 0)
+	{
+		head_a = stack_a;
+		ft_update_pos(head_a);
+		while (head_a->num != ft_check_min(stack_a))
+			head_a = head_a->next;
+		while (stack_a->num != ft_check_min(stack_a))
+		{
+			if (head_a->pos <= head_a->rev_pos)
+				ft_ra(&stack_a);
+			else
+				ft_rra(&stack_a);
+		}
+		return ;
+	}
+	if (ft_stack_len(stack_a) == 3)
+	{
+		ft_sort_three(&stack_a);
+		return ;
+	}
 	ft_pb(&stack_a, &stack_b);
 	while (ft_stack_len(stack_a) > 2)
 	{
@@ -77,7 +96,7 @@ int	main(int argc, char **argv)
 	t_stack *stack_a;
 	int		i;
 	int		j;
-	
+
 	if (argc == 1)
 		return (write(1, "Error\n", 6));
 	i = 1;
@@ -93,7 +112,16 @@ int	main(int argc, char **argv)
 				return (write(1, "Error\n", 6));
 		i++;
 	}
-	stack_a = ft_create_stack(argv);
-	ft_push_swap(stack_a);
+	i = 2;
+	while (argv[i])
+	{
+		if (ft_atol(argv[i - 1]) > ft_atol(argv[i]))
+		{
+			stack_a = ft_create_stack(argv);
+			ft_push_swap(stack_a);
+			break ;
+		}
+		i++;
+	}
 	return (0);
 }

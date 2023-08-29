@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/28 21:55:08 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/29 15:50:00 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int	ft_big_or_small(int num, t_stack *stack);
 int	ft_highest_low(t_stack *stack, int num);
 int	ft_lowest_high(t_stack *stack, int num);
 int	ft_cheapest_option(t_stack *stack_a);
+int	ft_sorted_but_not_quite(t_stack *stack_a);
 
 #endif
