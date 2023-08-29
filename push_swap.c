@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/29 21:44:12 by tiago            ###   ########.fr       */
+/*   Updated: 2023/08/29 22:20:51 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_push_swap(t_stack *stack_a)
 		return ;
 	}
 	ft_pb(&stack_a, &stack_b);
-	while (ft_stack_len(stack_a) > 2)
+	while (ft_stack_len(stack_a) > 3)
 	{
 		ft_update_pos(stack_a);
 		ft_update_pos(stack_b);
@@ -54,6 +54,7 @@ void	ft_push_swap(t_stack *stack_a)
 			highest_low = ft_highest_low(stack_b, cheapest_option);
 		ft_operation(&stack_a, &stack_b, cheapest_option, highest_low);
 	}
+	ft_sort_three(&stack_a);
 	while (stack_b)
 	{
 		ft_update_pos(stack_a);
@@ -76,18 +77,6 @@ void	ft_push_swap(t_stack *stack_a)
 		else
 			ft_rra(&stack_a);
 	}
-
-	// TESTE
-	/* head_a = stack_a;
-	while (stack_a)
-	{
-		printf("%d\n", stack_a->num);
-		stack_a = stack_a->next;
-		if (stack_a == head_a)
-			break ;
-	} */
-	// TESTE
-	
 	return ;
 }
 
