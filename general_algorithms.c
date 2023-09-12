@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general algorithms.c                               :+:      :+:    :+:   */
+/*   general_algorithms.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 09:41:56 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/26 23:50:48 by tiago            ###   ########.fr       */
+/*   Updated: 2023/09/12 20:37:30 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_push_to_stack(t_stack **stack_x, t_stack **stack_y)
     *stack_x = (*stack_x)->next; // Move to the next node in stack_x
 }
 
-void	ft_bottom_to_top(t_stack **head) // rever esta função«
+void	ft_bottom_to_top(t_stack **head)
 {
     if (*head == NULL || (*head)->next == *head)
         return;
