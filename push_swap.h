@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/29 15:50:00 by tiago            ###   ########.fr       */
+/*   Updated: 2023/09/18 10:18:28 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_operation_aid(t_stack **stack_a, t_stack **stack_b, int cheapest_option,
 void	ft_operation(t_stack **stack_a, t_stack **stack_b, int cheapest_option, int highest_low);
 void	ft_operation_aid_back(t_stack **stack_b, t_stack **stack_a, int cheapest_option, int highest_low);
 void	ft_operation_back(t_stack **stack_b, t_stack **stack_a, int cheapest_option, int highest_low);
+void	ft_delete_lst_content(t_stack **stack);
 
 int	ft_is_stack_sorted(t_stack *stack);
 int	ft_check_min(t_stack *stack);

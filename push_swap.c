@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/08/29 22:20:51 by tiago            ###   ########.fr       */
+/*   Updated: 2023/09/18 10:50:20 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ void	ft_push_swap(t_stack *stack_a)
 
 int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
+	t_stack *stack_a = NULL;
+	t_stack *next;
+
 	int		i;
 	int		j;
 
@@ -112,5 +114,22 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
+	stack_a->prev->next = NULL;
+	while (stack_a)
+	{
+		next = stack_a->next;
+		ft_delete_lst_content(&stack_a);
+		free(stack_a);
+		stack_a = next;
+	}
 	return (0);
+}
+void	ft_delete_lst_content(t_stack **stack)
+{
+	(*stack)->num = 0;
+	(*stack)->cost = 0;
+	(*stack)->pos = 0;
+	(*stack)->rev_pos = 0;
+	(*stack)->next = NULL;
+	(*stack)->prev = NULL;
 }
