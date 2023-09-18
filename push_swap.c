@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/18 10:50:20 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:16:34 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ft_push_swap(t_stack *stack_a)
 		ft_operation_back(&stack_b, &stack_a, cheapest_option, highest_low);
 	}
 	head_a = stack_a;
+	/* printf("%d\n", stack_a->pos);
+	printf("%d\n", stack_a->num); */
 	while (head_a->num != ft_check_min(stack_a))
 		head_a = head_a->next;
 	while (stack_a->num != ft_check_min(stack_a))

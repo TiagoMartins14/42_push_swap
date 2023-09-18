@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 09:41:56 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/18 10:57:38 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:19:09 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_swap_top_two(t_stack **head)
 
 void	ft_bottom_to_top(t_stack **head)
 {
-    if (*head == NULL || (*head)->next == *head)
+    if (*head == NULL || (*head)->prev == *head)
         return;
     *head = (*head)->prev;
 }
@@ -45,10 +45,7 @@ void	ft_push_to_stack(t_stack **stack_x, t_stack **stack_y)
         return;
     temp = *stack_x;
 	if (ft_stack_len(*stack_x) == 1)
-    {
-		ft_delete_lst_content(stack_x);
         *stack_x = NULL;
-    }
 	else
 	{
 		(*stack_x)->prev->next = (*stack_x)->next;
