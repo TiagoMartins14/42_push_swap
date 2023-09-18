@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/18 10:18:28 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/18 23:09:15 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int	ft_highest_low(t_stack *stack, int num);
 int	ft_lowest_high(t_stack *stack, int num);
 int	ft_cheapest_option(t_stack *stack_a);
 int	ft_sorted_but_not_quite(t_stack *stack_a);
+int	if_only_swap_top(t_stack *stack);
 
 #endif

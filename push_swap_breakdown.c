@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:15:03 by tiago             #+#    #+#             */
-/*   Updated: 2023/08/29 15:52:15 by tiago            ###   ########.fr       */
+/*   Updated: 2023/09/18 23:12:56 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,24 @@ int	ft_sorted_but_not_quite(t_stack *stack_a)
 		stack_a = stack_a->next;
 	}
 	return (0);
+}
+int	if_only_swap_top(t_stack *stack)
+{
+	t_stack *first_node;
+	t_stack *second_node;
+
+	first_node = stack;
+	second_node = stack->next;
+	stack = stack->next->next;
+	if (first_node->num < second_node->num)
+		return (0);
+	while (stack)
+	{
+		if (first_node->num > stack->num || second_node->num > stack->num)
+			return (0);
+		stack = stack->next;
+		if (stack == first_node)
+			break;
+	}
+	return (1);
 }

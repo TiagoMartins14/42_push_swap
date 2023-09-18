@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/18 12:16:34 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/18 23:09:43 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	ft_push_swap(t_stack *stack_a)
 			else
 				ft_rra(&stack_a);
 		}
+		return ;
+	}
+	if (if_only_swap_top(stack_a) == 1)
+	{
+		ft_swap_top_two(&stack_a);
+		write(1, "sa\n", 3);
 		return ;
 	}
 	if (ft_stack_len(stack_a) == 3)
@@ -112,17 +118,17 @@ int	main(int argc, char **argv)
 		{
 			stack_a = ft_create_stack(argv);
 			ft_push_swap(stack_a);
+			stack_a->prev->next = NULL;
+			while (stack_a)
+			{
+				next = stack_a->next;
+				ft_delete_lst_content(&stack_a);
+				free(stack_a);
+				stack_a = next;
+			}
 			break ;
 		}
 		i++;
-	}
-	stack_a->prev->next = NULL;
-	while (stack_a)
-	{
-		next = stack_a->next;
-		ft_delete_lst_content(&stack_a);
-		free(stack_a);
-		stack_a = next;
 	}
 	return (0);
 }

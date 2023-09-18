@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general_algorithms.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 09:41:56 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/18 12:19:09 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:04:49 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	ft_push_to_stack(t_stack **stack_x, t_stack **stack_y)
 {
     t_stack *temp;
 
-    if (*stack_x == NULL)
-        return;
     temp = *stack_x;
 	if (ft_stack_len(*stack_x) == 1)
         *stack_x = NULL;
