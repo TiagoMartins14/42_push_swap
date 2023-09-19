@@ -1,48 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stat_update.c                                      :+:      :+:    :+:   */
+/*   ft_check_target_pos.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 11:34:32 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 07:59:43 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/09/19 08:18:46 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/09/19 08:23:32 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+include "push_swap.h"
 
-void	ft_update_pos(t_stack *stack) 
+int	ft_check_target_pos(t_stack *stack)
 {
-	int	pos;
-	int rev_pos;
-	t_stack *head;
-	
-	pos = 1;
-	rev_pos = ft_stack_len(stack);
+	int		min;
+	int		target_pos;
+	t_stack	*head;
+
+	min = stack->num;
 	head = stack;
 	while (stack)
 	{
-		stack->pos = pos;
-		stack->rev_pos = rev_pos;
-		pos++;
-		rev_pos--;
+		if (min > stack->num)
+		{
+			min = stack->num;
+			target_pos = stack->pos;
+		}
 		stack = stack->next;
 		if (stack == head)
 			break ;
 	}
-}
-
-void	ft_update_cost(t_stack *stack_a, t_stack *stack_b)
-{
-	t_stack *head_a;
-
-	head_a = stack_a;
-	while (stack_a)
-	{
-		stack_a->cost = ft_cost(head_a, stack_b, stack_a->pos);
-		stack_a = stack_a->next;
-		if (stack_a == head_a)
-			break ;
-	}
+	return (target_pos);
 }

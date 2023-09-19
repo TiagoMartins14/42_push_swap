@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/18 23:09:43 by tiago            ###   ########.fr       */
+/*   Updated: 2023/09/19 09:32:02 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,46 @@ void	ft_push_swap(t_stack *stack_a)
 		}
 		return ;
 	}
-	if (if_only_swap_top(stack_a) == 1)
+	if (if_only_swap_two(stack_a) == 0)
 	{
+		int	count;
+		int	direction;
+		int	distance;
+		
+		count = 0;
+		distance = 0;
+		while (stack_a->num < stack_a->next->num)
+		{
+			stack_a = stack_a->next;
+			distance++;
+		}
+		if (distance <= ft_stack_len(stack_a) / 2)
+		{
+			while (head_a->num != stack_a->num)
+			{
+				ft_rra(&stack_a);
+				count++;
+			}
+			direction = 0;
+		}
+		else
+		{
+			while (head_a->num != stack_a->num)
+			{
+				ft_ra(&stack_a);
+				count++;
+			}
+			direction = 1;
+		}
 		ft_swap_top_two(&stack_a);
 		write(1, "sa\n", 3);
+		while (count-- > 0)
+		{
+			if (direction == 1)
+				ft_ra(&stack_a);
+			else
+				ft_rra(&stack_a);
+		}
 		return ;
 	}
 	if (ft_stack_len(stack_a) == 3)
@@ -74,8 +110,6 @@ void	ft_push_swap(t_stack *stack_a)
 		ft_operation_back(&stack_b, &stack_a, cheapest_option, highest_low);
 	}
 	head_a = stack_a;
-	/* printf("%d\n", stack_a->pos);
-	printf("%d\n", stack_a->num); */
 	while (head_a->num != ft_check_min(stack_a))
 		head_a = head_a->next;
 	while (stack_a->num != ft_check_min(stack_a))
