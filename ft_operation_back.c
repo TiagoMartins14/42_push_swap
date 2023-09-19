@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting_decisions.c                                :+:      :+:    :+:   */
+/*   ft_operation_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 11:46:10 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 09:45:23 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:28:16 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,28 @@ void	ft_operation_back(t_stack **stack_b, t_stack **stack_a, int cheapest_option
 		head_a = (*stack_a);
 		while (head_a->num != highest_low)
 			head_a = head_a->next;
-		if (head_b->pos - 1 < head_b->rev_pos + 1 && head_a->pos - 1 < head_a->rev_pos + 1)
-			ft_rr(stack_b, stack_a);
-		else if (head_a->rev_pos + 1 - head_b->rev_pos + 1 > head_a->pos - 1)
-		{
-			ft_ra(stack_a);
-			ft_rrb(stack_b);
-		}
-		else if (head_b->rev_pos + 1 - head_a->rev_pos + 1 > head_b->pos - 1)
-		{
-			ft_rb(stack_b);
-			ft_rra(stack_a);
-		}
-		else
-			ft_rrr(stack_b, stack_a);
+		ft_op_move_back(stack_a, stack_b, head_a, head_b);
 		ft_update_pos(*stack_b);
 		ft_update_pos(*stack_a);
 	}
 	ft_operation_aid_back(stack_b, stack_a, cheapest_option, highest_low);
+	ft_pa(stack_a, stack_b);
+}
+
+void	ft_op_move_back(t_stack **stack_a, t_stack **stack_b, t_stack *head_a, t_stack *head_b)
+{
+	if (head_b->pos - 1 < head_b->rev_pos + 1 && head_a->pos - 1 < head_a->rev_pos + 1)
+		ft_rr(stack_b, stack_a);
+	else if (head_a->rev_pos + 1 - head_b->rev_pos + 1 > head_a->pos - 1)
+	{
+		ft_ra(stack_a);
+		ft_rrb(stack_b);
+	}
+	else if (head_b->rev_pos + 1 - head_a->rev_pos + 1 > head_b->pos - 1)
+	{
+		ft_rb(stack_b);
+		ft_rra(stack_a);
+	}
+	else
+		ft_rrr(stack_b, stack_a);
 }

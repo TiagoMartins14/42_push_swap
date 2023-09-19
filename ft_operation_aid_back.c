@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:45:09 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 09:45:17 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:09:17 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void	ft_operation_aid_back(t_stack **stack_b, t_stack **stack_a, int cheapest_op
 			ft_rra((stack_a));
 		ft_update_pos(*stack_a);
 	}
-	ft_pa(stack_a, stack_b);
 }
