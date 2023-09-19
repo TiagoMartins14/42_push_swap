@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 12:32:40 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/19 23:44:07 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	ft_push_swap(t_stack *stack_a)
 {
 	t_stack	*stack_b;
 	t_stack	*head_a;
-	int		cheapest_option;
-	int		highest_low;
 	
 	stack_b = NULL;
 	head_a = stack_a;
@@ -74,31 +72,9 @@ void	ft_push_swap(t_stack *stack_a)
 		return ;
 	}
 	ft_pb(&stack_a, &stack_b);
-	while (ft_stack_len(stack_a) > 3) //ESTOU A DIMINUAR ESTA PARTE
-	{
-		ft_update_pos(stack_a);
-		ft_update_pos(stack_b);
-		ft_update_cost(stack_a, stack_b);
-		cheapest_option = ft_cheapest_option(stack_a);
-		if (ft_big_or_small(cheapest_option, stack_b) == 1)
-			highest_low = ft_check_max(stack_b);
-		else
-			highest_low = ft_highest_low(stack_b, cheapest_option);
-		ft_operation(&stack_a, &stack_b, cheapest_option, highest_low);
-	}
+	ft_a_to_b(&stack_a, &stack_b);
 	ft_sort_three(&stack_a);
-	while (stack_b)
-	{
-		ft_update_pos(stack_a);
-		ft_update_pos(stack_b);
-		ft_update_cost(stack_b, stack_a);
-		cheapest_option = ft_cheapest_option(stack_b);
-		if (ft_big_or_small(cheapest_option, stack_a) == 1)
-			highest_low = ft_check_min(stack_a); // Although I use this name, in this instance I actually use it for the opposite of what the name sugests. I am looking for the lowest highest number.
-		else
-			highest_low = ft_lowest_high(stack_a, cheapest_option);
-		ft_operation_back(&stack_b, &stack_a, cheapest_option, highest_low);
-	}
+	ft_b_to_a(&stack_b, &stack_a);
 	head_a = stack_a;
 	while (head_a->num != ft_check_min(stack_a))
 		head_a = head_a->next;
@@ -130,21 +106,54 @@ void	ft_sorted_but_not_quite_aid(t_stack *stack_a)
 	return ;
 }
 
-void	ft_a_to_b(t_stack *stack_a, t_stack *stack_b) //AINDA EM EXECUCAO
+void	ft_a_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int	cheapest_option;
 	int	highest_low;
-	
-	while (ft_stack_len(stack_a) > 3)
+	t_stack	*head_a;
+	t_stack	*head_b;
+
+	head_a = *stack_a;
+	head_b = *stack_b;
+	while (ft_stack_len(head_a) > 3)
 	{
-		ft_update_pos(stack_a);
-		ft_update_pos(stack_b);
-		ft_update_cost(stack_a, stack_b);
-		cheapest_option = ft_cheapest_option(stack_a);
-		if (ft_big_or_small(cheapest_option, stack_b) == 1)
-			highest_low = ft_check_max(stack_b);
+		ft_update_pos(head_a);
+		ft_update_pos(head_b);
+		ft_update_cost(head_a, head_b);
+		cheapest_option = ft_cheapest_option(head_a);
+		if (ft_big_or_small(cheapest_option, head_b) == 1)
+			highest_low = ft_check_max(head_b);
 		else
-			highest_low = ft_highest_low(stack_b, cheapest_option);
-		ft_operation(&stack_a, &stack_b, cheapest_option, highest_low);
+			highest_low = ft_highest_low(head_b, cheapest_option);
+		ft_operation(stack_a, stack_b, cheapest_option, highest_low);
+		head_a = *stack_a;
+		head_b = *stack_b;
 	}
+	return ;
+}
+
+void	ft_b_to_a(t_stack **stack_b, t_stack **stack_a)
+{
+	int	cheapest_option;
+	int	highest_low;
+	t_stack	*head_a;
+	t_stack	*head_b;
+
+	head_a = *stack_a;
+	head_b = *stack_b;
+	while (head_b)
+	{
+		ft_update_pos(head_a);
+		ft_update_pos(head_b);
+		ft_update_cost(head_b, head_a);
+		cheapest_option = ft_cheapest_option(head_b);
+		if (ft_big_or_small(cheapest_option, head_a) == 1)
+			highest_low = ft_check_min(head_a); // Although I use this name, in this instance I actually use it for the opposite of what the name sugests. I am looking for the lowest highest number.
+		else
+			highest_low = ft_lowest_high(head_a, cheapest_option);
+		ft_operation_back(stack_b, stack_a, cheapest_option, highest_low);
+		head_a = *stack_a;
+		head_b = *stack_b;
+	}
+	return ;
 }
