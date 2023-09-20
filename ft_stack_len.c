@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:39:11 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 09:39:28 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:58:59 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 // Returns the lenght of the stack
 int	ft_stack_len(t_stack *stack)
 {
-	int	len;
-	t_stack *head;
+	int		len;
+	t_stack	*head;
 
 	len = 0;
 	head = stack;

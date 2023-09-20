@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:37:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 09:38:22 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:30:21 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack *stack_a = NULL;
-	t_stack *next;
-
 	int		i;
-	int		j;
 
 	if (argc == 1)
 		return (write(1, "Error\n", 6));
 	i = 1;
-	while (argv[i]) // Check if not int
+	while (argv[i])
 		if (ft_atol(argv[i++]) == 3333333333)
 			return (write(1, "Error\n", 6));
 	i = 1;
-	while (argv[i]) // Check if there is a repeated int
-	{
-		j = i + 1;
-		while (argv[j])
-			if (ft_atol(argv[i]) == ft_atol(argv[j++]))
-				return (write(1, "Error\n", 6));
-		i++;
-	}
+	if (ft_check_if_repeated_int(argv) == 1)
+		return (write(1, "Error\n", 6));
 	i = 2;
+	ft_full_push_swap(argv);
+	return (0);
+}
+
+void	ft_full_push_swap(char **argv)
+{
+	int		i;
+	t_stack	*stack_a;
+	t_stack	*next;
+
+	i = 2;
+	stack_a = NULL;
 	while (argv[i])
 	{
 		if (ft_atol(argv[i - 1]) > ft_atol(argv[i]))
@@ -54,5 +56,5 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-	return (0);
+	return ;
 }

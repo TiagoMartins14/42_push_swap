@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assist_functions_2.c                               :+:      :+:    :+:   */
+/*   ft_lowest_high.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 18:30:10 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 09:40:19 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:54:08 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_lowest_high(t_stack *stack, int num)
 {
-	int lowest_high;
-	t_stack *head;
+	int		lowest_high;
+	t_stack	*head;
 
 	lowest_high = ft_check_max(stack);
 	head = stack;

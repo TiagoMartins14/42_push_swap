@@ -6,18 +6,19 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:44:47 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 11:31:36 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:57:12 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_operation(t_stack **stack_a, t_stack **stack_b, int cheapest_option, int highest_low)
+void	ft_operation(t_stack **stack_a, t_stack **stack_b, \
+						int cheapest_option, int highest_low)
 {
-	t_stack *head_a;
-	t_stack *head_b;
+	t_stack	*head_a;
+	t_stack	*head_b;
 
-		while ((*stack_a)->num != cheapest_option && (*stack_b)->num != highest_low)
+	while ((*stack_a)->num != cheapest_option && (*stack_b)->num != highest_low)
 	{
 		head_a = (*stack_a);
 		while (head_a->num != cheapest_option)
@@ -25,6 +26,7 @@ void	ft_operation(t_stack **stack_a, t_stack **stack_b, int cheapest_option, int
 		head_b = (*stack_b);
 		while (head_b->num != highest_low)
 			head_b = head_b->next;
+		ft_op_move(stack_a, stack_b, head_a, head_b);
 		ft_update_pos(*stack_a);
 		ft_update_pos(*stack_b);
 	}
@@ -32,9 +34,11 @@ void	ft_operation(t_stack **stack_a, t_stack **stack_b, int cheapest_option, int
 	ft_pb(stack_a, stack_b);
 }
 
-void	ft_op_move(t_stack **stack_a, t_stack **stack_b, t_stack *head_a, t_stack *head_b)
+void	ft_op_move(t_stack **stack_a, t_stack **stack_b, \
+						t_stack *head_a, t_stack *head_b)
 {
-	if (head_a->pos - 1 < head_a->rev_pos + 1 && head_b->pos - 1 < head_b->rev_pos + 1)
+	if (head_a->pos - 1 < head_a->rev_pos + 1 && \
+			head_b->pos - 1 < head_b->rev_pos + 1)
 		ft_rr(stack_a, stack_b);
 	else if (head_b->rev_pos + 1 - head_a->rev_pos + 1 > head_b->pos - 1)
 	{

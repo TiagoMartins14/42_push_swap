@@ -6,18 +6,18 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 11:34:32 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 07:59:43 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:22:26 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_update_pos(t_stack *stack) 
+void	ft_update_pos(t_stack *stack)
 {
-	int	pos;
-	int rev_pos;
-	t_stack *head;
-	
+	int		pos;
+	int		rev_pos;
+	t_stack	*head;
+
 	pos = 1;
 	rev_pos = ft_stack_len(stack);
 	head = stack;
@@ -35,7 +35,7 @@ void	ft_update_pos(t_stack *stack)
 
 void	ft_update_cost(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack *head_a;
+	t_stack	*head_a;
 
 	head_a = stack_a;
 	while (stack_a)

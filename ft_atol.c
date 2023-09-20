@@ -6,12 +6,13 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:41:03 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 09:41:13 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:40:15 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//Returns the number '3333333333' if error
 long	ft_atol(char *str)
 {
 	long	num;
@@ -31,6 +32,6 @@ long	ft_atol(char *str)
 	if (str[0] == '-')
 		num = -num;
 	if (num > 2147483647 || num < -2147483648)
-		return (3333333333); // error value
+		return (3333333333);
 	return (num);
 }

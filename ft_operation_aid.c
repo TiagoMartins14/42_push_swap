@@ -6,17 +6,18 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:43:53 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/19 10:10:12 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:55:28 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_operation_aid(t_stack **stack_a, t_stack **stack_b, int cheapest_option, int highest_low)
+void	ft_operation_aid(t_stack **stack_a, t_stack **stack_b, \
+							int cheapest_option, int highest_low)
 {
-	t_stack *head_a;
-	t_stack *head_b;
-	
+	t_stack	*head_a;
+	t_stack	*head_b;
+
 	while ((*stack_a)->pos != 1 || (*stack_a)->num != cheapest_option)
 	{
 		head_a = *stack_a;
