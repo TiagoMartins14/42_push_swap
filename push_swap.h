@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/20 10:31:21 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:38:48 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
+
+typedef struct s_commands
+{
+	char			*command;
+	struct s_stack	*next;
+}	t_commands;
 
 t_stack	*ft_create_stack(char **argv);
 

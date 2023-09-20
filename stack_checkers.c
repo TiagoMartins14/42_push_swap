@@ -6,13 +6,13 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:32:31 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/20 10:21:31 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:36:08 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//Return 1: not srted
+//Return 1: not sorted
 //Return 0: sorted
 int	ft_is_stack_sorted(t_stack *stack)
 {
