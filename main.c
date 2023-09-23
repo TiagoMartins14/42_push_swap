@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:37:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/20 10:30:21 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:45:26 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	int		i;
 
 	if (argc == 1)
-		return (write(1, "Error\n", 6));
+		return (0);
 	i = 1;
 	while (argv[i])
 		if (ft_atol(argv[i++]) == 3333333333)

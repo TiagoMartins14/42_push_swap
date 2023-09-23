@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/20 11:38:48 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:22:52 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
-
-typedef struct s_commands
-{
-	char			*command;
-	struct s_stack	*next;
-}	t_commands;
 
 t_stack	*ft_create_stack(char **argv);
 
@@ -88,5 +82,17 @@ int		ft_if_only_swap_two_aid(t_stack *first_node, t_stack *second_node, \
 									int checker, int num);
 int		ft_check_target_pos(t_stack *stack);
 int		ft_check_if_repeated_int(char **argv);
+
+
+//bonus
+
+typedef struct s_commands
+{
+	char				*command;
+	struct s_commands	*next;
+}	t_commands;
+
+t_commands	*ft_push_swap_commands(int fd);
+void	ft_checker(char	**argv, t_commands *commands);
 
 #endif
