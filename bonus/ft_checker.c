@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:01:44 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/23 23:50:28 by tiago            ###   ########.fr       */
+/*   Updated: 2023/09/24 21:16:12 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	ft_strcmp(char *str1, char *str2)
 	return (str1[i] - str2[i]);
 }
 
-char *ft_strdup(const char *str) {
+char *ft_strdup(const char *str)
+{
     size_t len = 0;
     while (str[len] != '\0') {
         len++;
@@ -131,10 +132,19 @@ int	main(int argc, char **argv)
 {
 	if (argc > 1)
 	{
-		int 		fd;
+		int			i;
+		int			fd;
 		t_commands	*commands;
 		t_commands	*head;
-		
+
+		if (argc == 1)
+			return (0);
+		i = 1;
+		while (argv[i])
+			if (ft_atol(argv[i++]) == 3333333333)
+				return (write(1, "Error\n", 6));
+		if (ft_check_if_repeated_int(argv) == 1)
+			return (write(1, "Error\n", 6));
 		fd = 0;
 		commands = ft_push_swap_commands(fd);
 		head = commands;
