@@ -6,7 +6,7 @@
 /*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:37:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/24 19:22:51 by tiago            ###   ########.fr       */
+/*   Updated: 2023/09/26 10:20:42 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (argv[i])
 		if (ft_atol(argv[i++]) == 3333333333)
-			return (write(1, "Error\n", 6));
+			return (write(2, "Error\n", 6));
 	if (ft_check_if_repeated_int(argv) == 1)
-		return (write(1, "Error\n", 6));
+		return (write(2, "Error\n", 6));
 	ft_full_push_swap(argv);
 	return (0);
 }

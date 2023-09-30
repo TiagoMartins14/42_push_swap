@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general_algorithms.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 09:41:56 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/20 10:00:54 by tiaferna         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:17:23 by tiago            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_push_to_stack(t_stack **stack_x, t_stack **stack_y)
 	t_stack	*temp;
 
 	temp = *stack_x;
+	if (!temp)
+		return ;
 	if (ft_stack_len(*stack_x) == 1)
 		*stack_x = NULL;
 	else
@@ -57,11 +59,14 @@ void	ft_push_to_stack(t_stack **stack_x, t_stack **stack_y)
 		(*stack_y)->prev = *stack_y;
 	}
 	else
-	{
-		(*stack_y)->prev->next = temp;
-		temp->prev = (*stack_y)->prev;
-		(*stack_y)->prev = temp;
-		temp->next = *stack_y;
-		(*stack_y) = (*stack_y)->prev;
-	}
+		ft_push_to_stack_aid(stack_y, temp);
+}
+
+void	ft_push_to_stack_aid(t_stack **stack_y, t_stack *temp)
+{
+	(*stack_y)->prev->next = temp;
+	temp->prev = (*stack_y)->prev;
+	(*stack_y)->prev = temp;
+	temp->next = *stack_y;
+	(*stack_y) = (*stack_y)->prev;
 }
