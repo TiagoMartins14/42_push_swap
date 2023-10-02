@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 07:39:45 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/09/30 18:10:38 by tiago            ###   ########.fr       */
+/*   Updated: 2023/10/02 09:54:58 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ int		ft_if_only_swap_two_aid(t_stack *first_node, t_stack *second_node, \
 									int checker, int num);
 int		ft_check_target_pos(t_stack *stack);
 int		ft_check_if_repeated_int(char **argv);
+int		ft_strcmp(char *str1, char *str2);
+int		ft_argcheck(char **argv);
 
 #endif

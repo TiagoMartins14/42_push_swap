@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_push_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 09:37:54 by tiaferna          #+#    #+#             */
-/*   Updated: 2023/10/02 10:53:13 by tiaferna         ###   ########.fr       */
+/*   Created: 2023/07/24 07:28:40 by tiaferna          #+#    #+#             */
+/*   Updated: 2023/10/02 10:54:03 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_push_swap(t_stack *stack_a)
 {
-	int		i;
+	t_stack	*stack_b;
 
-	if (argc == 1)
-		return (0);
-	if (ft_argcheck(argv) == 0)
-		return (write(2, "Error\n", 6));
-	i = 1;
-	while (argv[i])
-		if (ft_atol(argv[i++]) == 3333333333)
-			return (write(2, "Error\n", 6));
-	if (ft_check_if_repeated_int(argv) == 1)
-		return (write(2, "Error\n", 6));
-	ft_full_push_swap(argv);
-	return (0);
+	stack_b = NULL;
+	if (ft_sorted_but_not_quite(stack_a) == 0)
+		ft_sorted_but_not_quite_aid(stack_a);
+	else if (ft_stack_len(stack_a) == 3)
+		ft_sort_three(&stack_a);
+	else
+	{
+		ft_pb(&stack_a, &stack_b);
+		ft_a_to_b(&stack_a, &stack_b);
+		ft_sort_three(&stack_a);
+		ft_b_to_a(&stack_b, &stack_a);
+		ft_sorted_but_not_quite_aid(stack_a);
+	}
+	return ;
 }

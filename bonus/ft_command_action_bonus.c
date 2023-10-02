@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_command_action_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiago <tiago@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:33:43 by tiago             #+#    #+#             */
-/*   Updated: 2023/09/30 22:15:36 by tiago            ###   ########.fr       */
+/*   Updated: 2023/10/02 10:44:53 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
+#include "../push_swap.h"
 
 int	ft_command_action(t_commands *commands, \
 						t_stack **stack_a, t_stack **stack_b)
